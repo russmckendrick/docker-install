@@ -1,0 +1,44 @@
+#!/bin/bash
+echo "========================================================================"
+echo "Docker installation"
+echo ""
+echo "This script will remove the vendor version of Docker and install the more"
+echo "up-to-date package from https://copr.fedoraproject.org/coprs/goldmann/docker-io/"
+echo ""
+read -p "Are you sure you wish to continue?"
+if [ "$REPLY" != "yes" ]; then
+echo ""
+echo "No problem, quiting"
+echo ""
+echo "========================================================================"
+   exit
+fi
+echo ""
+echo "========================================================================"
+echo ""
+echo "=> Adding 'goldmann-docker-io' repo ..."
+echo "[goldmann-docker-io]
+name=Copr repo for docker-io owned by goldmann
+baseurl=http://copr-be.cloud.fedoraproject.org/results/goldmann/docker-io/epel-7-$basearch/
+skip_if_unavailable=True
+gpgcheck=0
+enabled=1" > /etc/yum.repos.d/docker.repo
+echo "=> Done!"
+echo "=> Removing vendor installation of Docker ..."
+yum remove docker > /dev/null 2>&1
+echo "=> Done!"
+echo "=> Installing goldmann Docker packages ..."
+yum install docker-io > /dev/null 2>&1
+echo "=> Enabling & starting Docker ..."
+systemctl enable docker > /dev/null 2>&1
+systemctl start docker > /dev/null 2>&1
+echo "=> Done!"
+echo "========================================================================"
+echo "The latest version of Docker from 'goldmann-docker-io' repo has been"
+echo "installed and configured:"
+echo ""
+systemctl status docker
+echo ""
+docker -v
+echo ""
+echo "========================================================================"
