@@ -6,7 +6,7 @@ echo "This script will remove the vendor version of Docker and install the more"
 echo "up-to-date package from https://copr.fedoraproject.org/coprs/goldmann/docker-io/"
 echo ""
 read -p "Are you sure you wish to continue? " -n 1 -r
-echo 
+echo  ""
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 echo ""
