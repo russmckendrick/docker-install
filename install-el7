@@ -5,14 +5,10 @@ echo ""
 echo "This script will remove the vendor version of Docker and install the more"
 echo "up-to-date package from https://copr.fedoraproject.org/coprs/goldmann/docker-io/"
 echo ""
-read -p "Are you sure you wish to continue?"
-if [ "$REPLY" != "yes" ]; then
-echo ""
-echo "No problem, quiting"
-echo ""
-echo "========================================================================"
-   exit
-fi
+read -p "Are you sure you wish to continue? " -n 1 -r
+echo 
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
 echo ""
 echo "========================================================================"
 echo ""
@@ -42,3 +38,4 @@ echo ""
 docker -v
 echo ""
 echo "========================================================================"
+fi
