@@ -19,7 +19,7 @@ systemctl enable docker > /dev/null 2>&1
 systemctl start docker > /dev/null 2>&1
 echo "=> Done!"
 echo "========================================================================"
-echo "The latest version of Docker from 'goldmann-docker-io' repo has been installed and configured:"
+echo "The latest Docker binaries from 'docker.com' have been installed and configured:"
 echo ""
 docker -v
 echo ""

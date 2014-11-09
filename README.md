@@ -7,7 +7,7 @@ A quick one liner to install the latest version of Docker on CentOS 7 / RHEL 7 s
 This will remove the standard repository version of Docker and replace it with the latest version of the pre-Compiled Binaries from [Docker](https://docs.docker.com/installation/centos/#manual-installation-of-latest-version).
 
 ```bash
-curl -fsS https://raw2.github.com/russmckendrick/docker-install/master/install-bins | bash
+curl -fsS https://raw.githubusercontent.com/russmckendrick/docker-install/master/install-bins | bash
 ```
 
 ## Using Goldman Copr Repository
@@ -15,5 +15,5 @@ curl -fsS https://raw2.github.com/russmckendrick/docker-install/master/install-b
 It will remove the standard repository version of Docker and replace it with the latest build from the "[goldmann-docker-io](https://copr.fedoraproject.org/coprs/goldmann/docker-io/)" repo;
 
 ```bash
-curl -fsS https://raw2.github.com/russmckendrick/docker-install/master/install-goldman | bash
+curl -fsS https://raw.githubusercontent.com/russmckendrick/docker-install/master/install-goldman | bash
 ```
