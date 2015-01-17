@@ -9,6 +9,9 @@ echo ""
 echo "=> Removing vendor installation of Docker ..."
 yum remove -y docker > /dev/null 2>&1
 echo "=> Done!"
+echo "=> Adding Docker group ..."
+groupadd docker
+echo "=> Done!"
 echo "=> Installing Docker & Fig binaries ..."
 curl -L https://get.docker.com/builds/Linux/x86_64/docker-latest > /usr/bin/docker; chmod +x /usr/bin/docker
 curl -L https://github.com/docker/fig/releases/download/1.0.0/fig-`uname -s`-`uname -m` > /usr/local/bin/fig; chmod +x /usr/local/bin/fig
