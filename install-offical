@@ -25,7 +25,7 @@ rm -rf /tmp/docker-engine*
 echo "=> Done!"
 echo "=> Installing Docker Compose ..."
 easy_install pip > /dev/null 2>&1
-pip install -U docker-compose 2>&1
+pip install -Uq docker-compose
 echo "=> Done!"
 echo "=> Creating SymLink for Fig ..."
 ln -s /usr/bin/docker-compose /usr/bin/fig
