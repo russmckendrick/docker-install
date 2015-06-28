@@ -34,6 +34,10 @@ echo "=> Done!"
 echo "=> Creating SymLink for Fig ..."
 ln -s /usr/bin/docker-compose /usr/bin/fig
 echo "=> Done!"
+echo "=> Downloading docker-enter script ..."
+curl -Ls https://gist.githubusercontent.com/russmckendrick/df1f935fcf8e0f2d7261/raw/ce080bd293ddf41c51773ae8b7c8697b2714f16c/docker-enter.sh > /usr/bin/docker-enter && chmod +x /usr/bin/docker-enter
+ln -s /usr/bin/docker-enter /usr/bin/de
+echo "=> Done!"
 echo "Running 'hello-world' container ..."
 docker run hello-world
 echo "=> Done!"
