@@ -11,9 +11,11 @@ RELEASEURL=$(curl -s https://raw.githubusercontent.com/russmckendrick/docker-ins
 cd /tmp/
 curl -O -sSL $RELEASEURL > /dev/null 2>&1
 echo "=> Done!"
+if [ -f /usr/bin/docker ]; then
 echo "=> Removing vendor installation of Docker ..."
 yum remove -y docker docker-selinux > /dev/null 2>&1
 echo "=> Done!"
+fi
 echo "=> Installing offical Docker Engine RPM ..."
 yum localinstall --nogpgcheck -y /tmp/docker-engine* > /dev/null 2>&1
 echo "=> Enabling & starting Docker Engine ..."
@@ -24,7 +26,9 @@ echo "=> Cleaning /tmp ..."
 rm -rf /tmp/docker-engine*
 echo "=> Done!"
 echo "=> Installing Docker Compose ..."
+if [ ! -f /bin/pip ]; then
 easy_install pip > /dev/null 2>&1
+fi
 pip install -Uq docker-compose
 echo "=> Done!"
 echo "=> Creating SymLink for Fig ..."
