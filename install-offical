@@ -6,30 +6,16 @@ echo "up-to-date package from 'get.docker.com' along with Docker Compose"
 echo ""
 echo "======================================================================================"
 echo ""
-echo "=> Downloading the RPM ..."
-RELEASEURL=$(curl -s https://raw.githubusercontent.com/russmckendrick/docker-install/master/release_url)
-cd /tmp/
-curl -O -sSL $RELEASEURL > /dev/null 2>&1
+COMPOSEVERSION=$(curl -s https://raw.githubusercontent.com/russmckendrick/docker-install/master/composeversion)
+echo "=> Installing docker-engine ..."
+curl -sSL https://get.docker.com/ | sh  > /dev/null 2>&1
+echo "=> Starting docker-engine ..."
+sudo systemctl enable docker > /dev/null 2>&1
+sudo systemctl start docker > /dev/null 2>&1
 echo "=> Done!"
-if [ -f /usr/bin/docker ]; then
-echo "=> Removing vendor installation of Docker ..."
-yum remove -y docker docker-selinux > /dev/null 2>&1
-echo "=> Done!"
-fi
-echo "=> Installing offical Docker Engine RPM ..."
-yum localinstall --nogpgcheck -y /tmp/docker-engine* > /dev/null 2>&1
-echo "=> Enabling & starting Docker Engine ..."
-systemctl enable docker > /dev/null 2>&1
-systemctl start docker > /dev/null 2>&1
-echo "=> Done!"
-echo "=> Cleaning /tmp ..."
-rm -rf /tmp/docker-engine*
-echo "=> Done!"
-echo "=> Installing Docker Compose ..."
-if [ ! -f /bin/pip ]; then
-easy_install pip > /dev/null 2>&1
-fi
-pip install -Uq docker-compose
+echo "=> Installing docker-compose ..."
+sudo sh -c "curl -L https://github.com/docker/compose/releases/download/$COMPOSEVERSION/docker-compose-`uname -s`-`uname -m` >/usr/local/bin/docker-compose 2>/dev/null"
+sudo chmod +x /usr/local/bin/docker-compose > /dev/null 2>&1
 echo "=> Done!"
 echo "=> Creating SymLink for Fig ..."
 ln -s /usr/bin/docker-compose /usr/bin/fig
