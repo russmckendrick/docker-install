@@ -5,7 +5,7 @@ echo ""
 COMPOSEVERSION=$(curl -s https://raw.githubusercontent.com/russmckendrick/docker-install/master/composeversion)
 MACHINEVERSION=$(curl -s https://raw.githubusercontent.com/russmckendrick/docker-install/master/machineversion)
 echo "=> Installing docker-machine v$MACHINEVERSION ..."
-sudo sh -c "curl -L https://github.com/docker/machine/releases/download/$COMPOSEVERSION/docker-machine-`uname -s`-`uname -m` >/usr/local/bin/docker-machine 2>/dev/null"
+sudo sh -c "curl -L https://github.com/docker/machine/releases/download/$MACHINEVERSION/docker-machine-`uname -s`-`uname -m` >/usr/local/bin/docker-machine 2>/dev/null"
 sudo chmod +x /usr/local/bin/docker-machine v$COMPOSEVERSION> /dev/null 2>&1
 echo "=> Done!"
 echo "=> Installing docker-compose ..."
