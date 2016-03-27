@@ -1,0 +1,16 @@
+echo "======================================================================================"
+echo "Docker Compose install script"
+echo "======================================================================================"
+echo ""
+COMPOSEVERSION=$(curl -s https://raw.githubusercontent.com/russmckendrick/docker-install/master/composeversion)
+echo "=> Installing docker-compose v$COMPOSEVERSION ..."
+sudo sh -c "curl -L https://github.com/docker/compose/releases/download/$COMPOSEVERSION/docker-compose-`uname -s`-`uname -m` >/usr/local/bin/docker-compose 2>/dev/null"
+sudo chmod +x /usr/local/bin/docker-compose > /dev/null 2>&1
+echo "=> Done!"
+echo ""
+echo "======================================================================================"
+echo "The latest version of Docker Compose has been installed:"
+echo ""
+docker-compose --version
+echo ""
+echo "======================================================================================"x
